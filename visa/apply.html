@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apply | GlobalPath Zimbabwe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f5f6f8;
+}
+
+/* CONTAINER */
+.app{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+}
+
+.form-box{
+  width:100%;
+  max-width:700px;
+  background:#fff;
+  border-radius:26px;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+
+/* HEADER */
+.header{
+  background:#1e3a8a;
+  color:#fff;
+  padding:34px;
+  text-align:center;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+}
+
+/* STEPS */
+.step{
+  display:none;
+  padding:40px;
+  animation:fade .4s ease;
+}
+.step.active{display:block}
+
+label{
+  display:block;
+  font-size:14px;
+  font-weight:500;
+  margin-bottom:6px;
+}
+
+input,select{
+  width:100%;
+  padding:16px;
+  border-radius:14px;
+  border:2px solid #ddd;
+  margin-bottom:6px;
+  font-size:15px;
+}
+
+input.error, select.error{
+  border-color:#dc2626;
+}
+
+/* ERROR TEXT */
+.error-text{
+  font-size:13px;
+  color:#dc2626;
+  margin-bottom:18px;
+  display:none;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+
+button{
+  flex:1;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.next{background:#1e3a8a;color:#fff}
+.back{background:#eee}
+.submit{background:#16a34a;color:#fff}
+
+/* CONFIRM */
+.confirm{text-align:center}
+.confirm h2{font-size:26px;margin-bottom:12px}
+.confirm p{font-size:15px;color:#555}
+
+/* ANIMATION */
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <div class="form-box">
+
+    <div class="header">
+      <h1>Visa & Job Application</h1>
+      <p>Zimbabwe Applicants</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step active">
+      <label>Full Name</label>
+      <input id="name" placeholder="Enter your full name">
+      <div class="error-text" id="nameError">Please enter a valid full name</div>
+
+      <label>Phone Number</label>
+      <input id="phone" type="tel" placeholder="07XXXXXXXX" maxlength="10">
+      <div class="error-text" id="phoneError">
+        Phone number must start with 07 and contain 10 digits
+      </div>
+
+      <label>Email Address</label>
+      <input id="email" placeholder="example@email.com">
+      <div class="error-text" id="emailError">Please enter a valid email address</div>
+
+      <div class="buttons">
+        <span></span>
+        <button class="next" onclick="validateStep1()">Next</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <label>Select Destination Country</label>
+      <select id="country" onchange="clearCountryError(); loadJobs();">
+        <option value="">Select country</option>
+        <option>Canada</option>
+        <option>United Kingdom</option>
+        <option>Australia</option>
+        <option>Germany</option>
+        <option>UAE</option>
+      </select>
+      <div class="error-text" id="countryError">Please select a destination country</div>
+
+      <label>Select Job Category</label>
+      <select id="job" onchange="clearJobError()">
+        <option value="">Select job</option>
+      </select>
+      <div class="error-text" id="jobError">Please select a job category</div>
+
+      <div class="buttons">
+        <button class="back" onclick="prevStep()">Back</button>
+        <button class="next" onclick="validateStep2()">Next</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step confirm">
+      <h2>Confirm Application</h2>
+      <p>
+        Your application will be submitted for review.<br>
+        Our team will contact you after verification.
+      </p>
+
+      <div class="buttons">
+        <button class="back" onclick="prevStep()">Back</button>
+        <button class="submit" onclick="submitForm()">Submit Application</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let stepIndex = 0;
+const steps = document.querySelectorAll(".step");
+
+function showStep(){
+  steps.forEach((s,i)=>s.classList.toggle("active",i===stepIndex));
+}
+function nextStep(){stepIndex++;showStep()}
+function prevStep(){stepIndex--;showStep()}
+
+/* STEP 1 VALIDATION */
+function validateStep1(){
+  const name = document.getElementById("name");
+  const phone = document.getElementById("phone");
+  const email = document.getElementById("email");
+
+  let valid = true;
+
+  if(!/^[A-Za-z]+\s+[A-Za-z]+/.test(name.value.trim())){
+    name.classList.add("error");
+    nameError.style.display = "block";
+    valid = false;
+  }else{name.classList.remove("error");nameError.style.display="none"}
+
+  if(!/^07\d{8}$/.test(phone.value.trim())){
+    phone.classList.add("error");
+    phoneError.style.display = "block";
+    valid = false;
+  }else{phone.classList.remove("error");phoneError.style.display="none"}
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+    email.classList.add("error");
+    emailError.style.display = "block";
+    valid = false;
+  }else{email.classList.remove("error");emailError.style.display="none"}
+
+  if(valid) nextStep();
+}
+
+/* STEP 2 VALIDATION */
+function validateStep2(){
+  const country = document.getElementById("country");
+  const job = document.getElementById("job");
+
+  let valid = true;
+
+  if(country.value === ""){
+    country.classList.add("error");
+    countryError.style.display = "block";
+    valid = false;
+  }
+
+  if(job.value === ""){
+    job.classList.add("error");
+    jobError.style.display = "block";
+    valid = false;
+  }
+
+  if(valid) nextStep();
+}
+
+function clearCountryError(){
+  country.classList.remove("error");
+  countryError.style.display = "none";
+}
+
+function clearJobError(){
+  job.classList.remove("error");
+  jobError.style.display = "none";
+}
+
+/* JOBS */
+function loadJobs(){
+  const job = document.getElementById("job");
+  const country = document.getElementById("country").value;
+
+  const jobs = {
+    Canada:["Cleaner","Caregiver","Truck Driver","Warehouse Worker","Farm Worker","Construction Worker","Security Guard","Kitchen Assistant","Factory Worker","Delivery Driver"],
+    "United Kingdom":["Care Assistant","Warehouse Operative","Cleaner","Hotel Staff","Kitchen Porter","Factory Worker","Support Worker","Retail Assistant","Driver","Security Officer"],
+    Australia:["Construction Labourer","Cleaner","Farm Worker","Traffic Controller","Warehouse Worker","Hospitality Staff","Kitchen Hand","Security Guard","Factory Worker","Delivery Driver"],
+    Germany:["Factory Worker","Cleaner","Warehouse Staff","Care Assistant","Packaging Worker","Production Assistant","Hotel Staff","Kitchen Helper","Logistics Assistant","Construction Helper"],
+    UAE:["Security Guard","Hotel Staff","Cleaner","Housekeeping","Delivery Rider","Warehouse Worker","Construction Worker","Driver","Kitchen Assistant","Retail Assistant"]
+  };
+
+  job.innerHTML = "<option value=''>Select job</option>";
+  if(jobs[country]){
+    jobs[country].forEach(j=>{
+      const opt = document.createElement("option");
+      opt.textContent = j;
+      job.appendChild(opt);
+    });
+  }
+}
+
+/* SUBMIT */
+function submitForm(){
+  window.location.href = "requirements.html";
+}
+</script>
+
+</body>
+</html>

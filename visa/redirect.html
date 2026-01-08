@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Processing | GlobalPath Zimbabwe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f4f6f8;
+}
+
+/* PAGE */
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* CARD */
+.card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:26px;
+  padding:42px 28px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+/* CIRCLE LOADER */
+.loader{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:8px solid #e5e7eb;
+  border-top-color:#1e3a8a;
+  animation:spin 1s linear infinite;
+  margin:0 auto 26px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* TEXT */
+h1{
+  font-size:20px;
+  margin-bottom:6px;
+  color:#1e3a8a;
+}
+
+p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:22px;
+}
+
+/* LINE PROGRESS */
+.bar{
+  width:100%;
+  height:10px;
+  background:#e5e7eb;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#1e3a8a,#3b82f6);
+  transition:width .6s ease;
+}
+
+/* PERCENT */
+.percent{
+  font-size:26px;
+  font-weight:600;
+  color:#1e3a8a;
+  margin-bottom:6px;
+}
+
+.status{
+  font-size:14px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="card">
+
+    <div class="loader"></div>
+
+    <h1>Processing Application</h1>
+    <p>Please wait while we process your request</p>
+
+    <div class="bar">
+      <div class="fill" id="fill"></div>
+    </div>
+
+    <div class="percent" id="percent">0%</div>
+    <div class="status" id="status">Checking details...</div>
+
+  </div>
+</div>
+
+<script>
+const steps = [
+  { value: 10, text: "Checking details..." },
+  { value: 20, text: "Validating information..." },
+  { value: 43, text: "Confirming application..." },
+  { value: 55, text: "Comparing information..." },
+  { value: 68, text: "Booking Application..." },
+  { value: 82, text: "Finalizing request..." },
+  { value: 100, text: "Redirecting to login..." }
+];
+
+let index = 0;
+const fill = document.getElementById("fill");
+const percent = document.getElementById("percent");
+const status = document.getElementById("status");
+
+function nextStep(){
+  const step = steps[index];
+  fill.style.width = step.value + "%";
+  percent.innerText = step.value + "%";
+  status.innerText = step.text;
+
+  if(step.value === 100){
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1200);
+    return;
+  }
+
+  index++;
+  setTimeout(nextStep, 900);
+}
+
+setTimeout(nextStep, 600);
+</script>
+
+</body>
+</html>

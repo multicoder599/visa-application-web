@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Application Received | GlobalPath Zimbabwe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f4f6f8;
+}
+
+/* PAGE */
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:26px;
+  padding:42px 30px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  animation:fadeUp .6s ease;
+}
+
+/* SUCCESS ICON */
+.icon{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:#16a34a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 22px;
+  box-shadow:0 0 0 14px rgba(22,163,74,.18);
+}
+
+.icon svg{
+  width:46px;
+  height:46px;
+  stroke:#fff;
+  stroke-width:3;
+  fill:none;
+}
+
+/* TEXT */
+h1{
+  font-size:22px;
+  color:#16a34a;
+  margin-bottom:12px;
+}
+
+p{
+  font-size:14px;
+  color:#555;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+
+/* INFO BOX */
+.info{
+  background:#f0fdf4;
+  border:2px solid #86efac;
+  border-radius:18px;
+  padding:18px;
+  font-size:14px;
+  color:#166534;
+  margin-bottom:26px;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  background:#1e3a8a;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:22px;
+  font-size:12px;
+  color:#888;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="card">
+
+    <div class="icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 6L9 17l-5-5"/>
+      </svg>
+    </div>
+
+    <h1>Success!</h1>
+
+    <p>
+      Your scholarship application has been received and is currently being
+      worked on by our team.
+    </p>
+
+    <div class="info">
+      Once approved, the next steps will be sent to you via <strong>email</strong>,
+      and the funds will be sent to your <strong>provided account</strong>.
+    </div>
+
+    <button onclick="window.location.href='index.html'">
+      Return to Home
+    </button>
+
+    <div class="footer">
+      © 2026 GlobalPath Zimbabwe • Scholarship & Education Support
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

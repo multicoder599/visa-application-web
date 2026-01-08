@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Submit Application | GlobalPath Zimbabwe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f5f6f8;
+  color:#333;
+}
+
+/* PAGE */
+.page{
+  min-height:100vh;
+  padding:60px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:900px;
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  color:#1e3a8a;
+  margin-bottom:10px;
+}
+
+.header p{
+  font-size:16px;
+  color:#555;
+}
+
+/* FORM */
+form{
+  background:#fff;
+  border-radius:26px;
+  padding:40px;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+/* SECTION */
+.section{
+  margin-bottom:40px;
+}
+
+.section h2{
+  font-size:22px;
+  margin-bottom:20px;
+  color:#1e3a8a;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* INPUTS */
+label{
+  font-size:14px;
+  font-weight:500;
+  display:block;
+  margin-bottom:6px;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  border:2px solid #ddd;
+  font-size:15px;
+}
+
+/* NOTICE */
+.notice{
+  background:#fff4d6;
+  border:2px solid #ffcf70;
+  border-radius:18px;
+  padding:20px;
+  font-size:14px;
+  color:#555;
+}
+
+/* BUTTON */
+.actions{
+  display:flex;
+  justify-content:center;
+  margin-top:30px;
+}
+
+button{
+  padding:16px 50px;
+  border:none;
+  border-radius:50px;
+  background:#1e3a8a;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Visa & Job Application Form</h1>
+      <p>Please complete the form below accurately as per requirements.</p>
+    </div>
+
+    <!-- FORM -->
+    <form onsubmit="submitApplication(event)">
+
+      <!-- PERSONAL DETAILS -->
+      <div class="section">
+        <h2>Personal Information</h2>
+        <div class="grid">
+          <div>
+            <label>Full Name (as per passport)</label>
+            <input required>
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <input type="date" required>
+          </div>
+          <div>
+            <label>Phone Number</label>
+            <input placeholder="+263 7XXXXXXXX" required>
+          </div>
+          <div>
+            <label>Email Address</label>
+            <input type="email" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCUMENTS -->
+      <div class="section">
+        <h2>Identification Details</h2>
+        <div class="grid">
+          <div>
+            <label>Passport Number</label>
+            <input required>
+          </div>
+          <div>
+            <label>Passport Expiry Date</label>
+            <input type="date" required>
+          </div>
+          <div>
+            <label>National ID Number</label>
+            <input required>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOB PREFERENCE -->
+      <div class="section">
+        <h2>Job & Destination Preference</h2>
+        <div class="grid">
+          <div>
+            <label>Preferred Country</label>
+            <select required>
+              <option value="">Select country</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+              <option>Australia</option>
+              <option>Germany</option>
+              <option>UAE</option>
+            </select>
+          </div>
+          <div>
+            <label>Preferred Job Category</label>
+            <select required>
+              <option value="">Select job</option>
+              <option>Cleaner</option>
+              <option>Caregiver</option>
+              <option>Warehouse Worker</option>
+              <option>Farm Worker</option>
+              <option>Construction Worker</option>
+              <option>Security Guard</option>
+              <option>Hotel Staff</option>
+              <option>Factory Worker</option>
+              <option>Driver</option>
+              <option>Kitchen Assistant</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTICE -->
+      <div class="section notice">
+        <strong>Important:</strong><br>
+        Submission of this application does not guarantee visa approval.
+        Processing timelines vary depending on country and job availability.
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="actions">
+        <button type="submit">Submit Application</button>
+      </div>
+
+    </form>
+
+    <div class="footer">
+      © 2026 GlobalPath Zimbabwe • Visa & Employment Consultancy
+    </div>
+
+  </div>
+</div>
+
+<script>
+function submitApplication(e){
+  e.preventDefault();
+  
+  window.location.href = "scholarship.html";
+}
+</script>
+
+</body>
+</html>

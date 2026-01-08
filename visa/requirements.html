@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Requirements | GlobalPath Zimbabwe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f5f6f8;
+  color:#333;
+}
+
+/* PAGE */
+.page{
+  min-height:100vh;
+  padding:60px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:900px;
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:10px;
+  color:#1e3a8a;
+}
+
+.header p{
+  font-size:16px;
+  color:#555;
+}
+
+/* STEPS */
+.steps{
+  display:grid;
+  gap:30px;
+}
+
+/* STEP CARD */
+.step{
+  background:#fff;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 20px 45px rgba(0,0,0,.12);
+  display:flex;
+  gap:24px;
+  animation:fadeUp .5s ease;
+}
+
+.step-number{
+  min-width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#1e3a8a;
+  color:#fff;
+  font-size:22px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.step-content h3{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.step-content p{
+  font-size:15px;
+  color:#555;
+  margin-bottom:12px;
+}
+
+/* LIST */
+ul{
+  padding-left:18px;
+}
+
+li{
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+/* INFO BOX */
+.info{
+  margin-top:40px;
+  background:#fff4d6;
+  border:2px solid #ffcf70;
+  border-radius:22px;
+  padding:30px;
+}
+
+.info h3{
+  font-size:22px;
+  margin-bottom:12px;
+  color:#b45309;
+}
+
+.info p{
+  font-size:15px;
+  color:#555;
+}
+
+/* BUTTON */
+.actions{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+}
+
+button{
+  padding:16px 40px;
+  border:none;
+  border-radius:50px;
+  background:#1e3a8a;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:60px;
+  font-size:13px;
+  color:#888;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Application Onboarding & Requirements</h1>
+      <p>Please review the steps and required documents before proceeding.</p>
+    </div>
+
+    <!-- STEPS -->
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Initial Application</h3>
+          <p>Submit your personal details and preferred job destination.</p>
+          <ul>
+            <li>Full legal name (as per passport)</li>
+            <li>Valid phone number & email</li>
+            <li>Preferred country and job</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Document Requirements</h3>
+          <p>The following documents are required for processing:</p>
+          <ul>
+            <li>Valid passport (minimum 6 months validity)</li>
+            <li>National ID copy</li>
+            <li>Curriculum Vitae (CV)</li>
+            <li>Passport-sized photographs</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Screening & Verification</h3>
+          <p>Our team verifies your documents and eligibility.</p>
+          <ul>
+            <li>Background checks</li>
+            <li>Job matching and employer review</li>
+            <li>Embassy requirements assessment</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Interview & Processing</h3>
+          <p>You may be invited for an interview or further assessment.</p>
+          <ul>
+            <li>Interview preparation guidance</li>
+            <li>Visa application assistance</li>
+            <li>Submission to relevant authorities</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Final Decision & Travel</h3>
+          <p>Successful applicants proceed to travel arrangements.</p>
+          <ul>
+            <li>Visa outcome notification</li>
+            <li>Pre-departure briefing</li>
+            <li>Travel and relocation guidance</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ADDITIONAL INFO -->
+    <div class="info">
+      <h3>Additional Important Information</h3>
+      <p>
+        Processing times and outcomes vary depending on destination country,
+        job availability, and embassy requirements.  
+        Submission of documents does not guarantee visa approval.
+      </p>
+    </div>
+
+    <!-- ACTION -->
+    <div class="actions">
+      <button onclick="window.location.href='sapply.html'">
+        Proceed to Application
+      </button>
+    </div>
+
+    <div class="footer">
+      © 2026 GlobalPath Zimbabwe • Visa & Employment Consultancy
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

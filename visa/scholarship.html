@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scholarship Options | GlobalPath Zimbabwe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f5f6f8;
+  color:#333;
+}
+
+/* PAGE */
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:1000px;
+  text-align:center;
+}
+
+/* HEADER */
+.header{
+  margin-bottom:50px;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  color:#1e3a8a;
+  margin-bottom:12px;
+}
+
+.header p{
+  font-size:16px;
+  color:#555;
+}
+
+/* OPTIONS */
+.options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:26px;
+  padding:40px 30px;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  transition:.4s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-12px);
+}
+
+.card h2{
+  font-size:24px;
+  margin-bottom:14px;
+  color:#1e3a8a;
+}
+
+.card p{
+  font-size:15px;
+  color:#555;
+  line-height:1.6;
+  margin-bottom:24px;
+}
+
+/* BUTTON */
+.card button{
+  padding:14px 34px;
+  border:none;
+  border-radius:50px;
+  background:#1e3a8a;
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:50px;
+  font-size:13px;
+  color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Scholarship Application Options</h1>
+      <p>Please choose how you would like to proceed with your scholarship application.</p>
+    </div>
+
+    <!-- OPTIONS -->
+    <div class="options">
+
+      <!-- OPTION 1 -->
+      <div class="card" onclick="goLogin()">
+        <h2>Scholarship Funded</h2>
+        <p>
+          Apply for a scholarship where funding support is provided directly
+          to your EcoCash account to assist with your application process.
+        </p>
+        <button>Proceed</button>
+      </div>
+
+      <!-- OPTION 2 -->
+      <div class="card" onclick="goLogin()">
+        <h2>Self-Funded Application</h2>
+        <p>
+          Proceed with the scholarship application by funding the process
+          yourself without external financial assistance.
+        </p>
+        <button>Proceed</button>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      © 2026 GlobalPath Zimbabwe • Education & Scholarship Consultancy
+    </div>
+
+  </div>
+</div>
+
+<script>
+function goLogin(){
+  window.location.href = "application.html";
+}
+</script>
+
+</body>
+</html>

